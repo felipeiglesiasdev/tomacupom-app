@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Oferta extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql_app';
     protected $table = 'ofertas';               // NOME DA TABELA NO BD
     protected $primaryKey = 'id_oferta';        // CHAVE PRIMÁRIA
     protected $fillable = [                     // COLUNAS DA TABELA

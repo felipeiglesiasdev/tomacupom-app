@@ -2,39 +2,33 @@
 -- BANCO DE DADOS: TOMA CUPOM
 -- ===================================================
 
--- CRIA O BANCO DE DADOS COM O NOME 'toma_cupom'
-CREATE DATABASE IF NOT EXISTS toma_cupom
-  DEFAULT CHARACTER SET utf8mb4
-  DEFAULT COLLATE utf8mb4_unicode_ci;
-
-USE toma_cupom;
-
 -- =========================
 -- TABELA: LOJAS
 -- =========================
 CREATE TABLE lojas (
-    id_loja         BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nome            VARCHAR(150) NOT NULL,      
-    slug            VARCHAR(150) UNIQUE NOT NULL,               -- usado nas URLs amigáveis
-    url_oficial     VARCHAR(255),                               -- site real da loja
-    texto_seo       TEXT,                                       -- HTML para SEO
-    logo            VARCHAR(255),                               -- link para imagem da loja
-    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    id_loja                 BIGINT AUTO_INCREMENT PRIMARY KEY,          -- ID DA LOJA
+    nome                    VARCHAR(150) NOT NULL,                      -- NOME DA LOJA
+    titulo                  VARCHAR(255) NOT NULL,                      -- TÍTULO H1 QUE VAI NO HEADER DA PÁGINA (EX.:CUPONS ADIDAS, CUPONS DE DESCONTOS AMAZON)
+    descricao               VARCHAR(255) NOT NULL,                      -- DESCRIÇÃO QUE VAI NO HEADER DA PÁGINA (EX.:ENCONTRE OS MELHORES CUPONS DE DESCONTO NETSHOES AQUI ABAIXO)
+    url_base_afiliado       VARCHAR(255),                               -- URL DE AFILIADO (URL BASE, SEM ROTAS, LINK AFILIADO DA PÁGINA INICIAL DA LOJA)
+    texto_seo               MEDIUMTEXT,                                 -- HTML PARA SEO
+    logo                    TEXT,                                       -- LINK PARA IMAGEM DA LOJA
+    created_at              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at              TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- =========================
 -- TABELA: CUPONS
 -- =========================
 CREATE TABLE cupons (
-    id_cupom        BIGINT AUTO_INCREMENT PRIMARY KEY,
-    id_loja         BIGINT NOT NULL,
-    titulo          VARCHAR(255) NOT NULL,
-    descricao       TEXT,
-    regras          TEXT,
-    codigo          VARCHAR(50),                    -- código do cupom
-    data_expiracao  DATE,
-    link_redirecionamento VARCHAR(255),             -- link de afiliado
+    id_cupom        BIGINT AUTO_INCREMENT PRIMARY KEY,                  -- ID DO CUPOM
+    id_loja         BIGINT NOT NULL,                                    -- ID DA LOJA
+    titulo          VARCHAR(255) NOT NULL,                              -- TÍTULO DO CUPOM
+    descricao       TEXT,                                               -- DESCRIÇÃO DO CUPOM
+    regras          TEXT,                                               -- REGRAS
+    codigo          VARCHAR(50),                                        -- CÓDIGO
+    data_expiracao  DATE,                                               -- DATA DE EXPIRAÇÃO
+    link_redirecionamento VARCHAR(255),                                 -- LINK DE AFILIADO
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_loja) REFERENCES lojas(id_loja) ON DELETE CASCADE
@@ -81,20 +75,15 @@ CREATE TABLE loja_categoria (
 -- =========================
 
 -- Índices para Cupons
-CREATE INDEX idx_cupons_loja       ON cupons (id_loja);
-CREATE INDEX idx_cupons_data       ON cupons (data_expiracao);
+CREATE INDEX idx_cupons_loja            ON cupons (id_loja);
+CREATE INDEX idx_cupons_data            ON cupons (data_expiracao);
+CREATE INDEX idx_cupons_loja_data       ON cupons (id_loja, data_expiracao);
+CREATE INDEX idx_cupons_data_loja       ON cupons (data_expiracao, id_loja);
 
 -- Índices para Ofertas
-CREATE INDEX idx_ofertas_loja      ON ofertas (id_loja);
-CREATE INDEX idx_ofertas_data      ON ofertas (data_expiracao);
+CREATE INDEX idx_ofertas_loja           ON ofertas (id_loja);
+CREATE INDEX idx_ofertas_data           ON ofertas (data_expiracao);
+CREATE INDEX idx_ofertas_loja_data      ON cupons (id_loja, data_expiracao);
+CREATE INDEX idx_ofertas_data_loja      ON cupons (data_expiracao, id_loja);
 
--- Índices para Categorias (slug já é UNIQUE)
--- Mas podemos reforçar busca por nome também se for usado
-CREATE INDEX idx_categorias_nome   ON categorias (nome);
 
--- Índices para Loja_Categoria (já tem PK composta, mas criamos redundância para joins rápidos)
-CREATE INDEX idx_loja_categoria_loja      ON loja_categoria (id_loja);
-CREATE INDEX idx_loja_categoria_categoria ON loja_categoria (id_categoria);
-
--- Índices para Lojas (slug já é UNIQUE, mas indexar nome ajuda em buscas)
-CREATE INDEX idx_lojas_nome        ON lojas (nome);

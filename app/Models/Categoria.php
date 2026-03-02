@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Categoria extends Model
 {
+    protected $connection = 'mysql_app';
     use HasFactory;
     protected $table = 'categorias';            // NOME DA TABELA NO BD
     protected $primaryKey = 'id_categoria';     // CHAVE PRIMÁRIA

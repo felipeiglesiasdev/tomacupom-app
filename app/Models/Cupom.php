@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Cupom extends Model
 {
     use HasFactory;
-
+    protected $connection = 'mysql_app';
     protected $table = 'cupons';                // NOME DA TABELA NO BD
     protected $primaryKey = 'id_cupom';         // CHAVE PRIMÁRIA
 

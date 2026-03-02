@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Loja extends Model
 {
     use HasFactory;
+    protected $connection = 'mysql_app';
     protected $table = 'lojas';             // NOME DA TABELA NO BD
     protected $primaryKey = 'id_loja';      // CHAVE PRIMÁRIA
     protected $fillable = [                 // COLUNAS DA TABELA
@@ -13,6 +14,7 @@ class Loja extends Model
         'url_oficial',
         'texto_seo',
         'logo',
+        'descricao_header', 
     ];
 
     //#########################################################################################################
