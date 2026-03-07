@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Loja;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Carbon\Carbon; 
-
-
 class LojasController extends Controller
 {
 

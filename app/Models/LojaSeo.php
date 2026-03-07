@@ -1,53 +1,61 @@
 <?php
+
 namespace App\Models;
-use Illuminate\Database\Eloquent\Builder;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-class Categoria extends Model
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class LojaSeo extends Model
 {
     use HasFactory;
+
     // ===================================================
-    // DEFINICAO DA CONEXAO DO BANCO DE DADOS PRINCIPAL
+    // DEFINICAO DA CONEXAO DO BANCO PRINCIPAL
     // ===================================================
+
     protected $connection = 'mysql_dados';
+
     // ===================================================
-    // DEFINICAO DA TABELA
+    // DEFINICAO DA TABELA 
     // ===================================================
-    protected $table = 'categorias';
+
+    protected $table = 'lojas_seo';
+
     // ===================================================
-    // CHAVE PRIMARIA PERSONALIZADA
+    // CHAVE PRIMARIA (PK = FK)
     // ===================================================
-    protected $primaryKey = 'id_categoria';
+
+    protected $primaryKey = 'id_loja';
+
     // ===================================================
-    // CATEGORIAS NAO TEM created_at/updated_at
+    // NAO E AUTO INCREMENT (PK VEM DA LOJA)
     // ===================================================
-    public $timestamps = false;
+
+    public $incrementing = false;
+
     // ===================================================
     // CAMPOS ATRIBUIVEIS EM MASSA
     // ===================================================
+
     protected $fillable = [
-        'nome',
-        'slug',
+        'id_loja',
+        'title_seo',
+        'description_seo',
+        'keywords_seo',
+        'text_content_seo',
     ];
+
     // ===================================================
-    // RELACIONAMENTO N:N COM LOJAS
+    // RELACIONAMENTO: SEO PERTENCE A UMA LOJA
     // ===================================================
 
-    public function lojas(): BelongsToMany
+    public function loja(): BelongsTo
     {
-        return $this->belongsToMany(
+        return $this->belongsTo(
             Loja::class,
-            'loja_categoria',
-            'id_categoria',
+            'id_loja',
             'id_loja'
         );
-    }
-    // ===================================================
-    // SCOPE PARA ORDENAR POR NOME
-    // ===================================================
-    public function scopeOrdenadas(Builder $query): Builder
-    {
-        return $query->orderBy('nome');
     }
 }

@@ -14,9 +14,9 @@
         >
             <div class="flex items-center justify-between p-4">
                 <!-- Logo -->
-                <a href="{{ route('home') }}" class="group flex items-center space-x-2 flex-shrink-0 lg:w-1/4" title="Página Inicial do Toma Cupom">
-                    <img x-show="scrolled || mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="{{ asset('images/logo/teste2.png') }}" alt="Logo Toma Cupom" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo">
-                    <img x-show="!scrolled && !mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="{{ asset('images/logo/teste.png') }}" alt="Logo Toma Cupom" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo">
+                <a href="{{ route('home') }}" class="group flex items-center space-x-2 flex-shrink-0 lg:w-1/4" title="Página Inicial - Toma Cupom">
+                    <img x-show="scrolled || mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="{{ asset('images/logo/3.png') }}" alt="Logo Toma Cupom" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo">
+                    <img x-show="!scrolled && !mobileMenuOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" src="{{ asset('images/logo/3.png') }}" alt="Logo Toma Cupom" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo">
                 </a>
 
                 <!-- Search Bar (Desktop) -->

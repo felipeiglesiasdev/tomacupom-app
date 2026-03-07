@@ -1,46 +1,106 @@
 <?php
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 class Loja extends Model
 {
     use HasFactory;
-    protected $connection = 'mysql_app';
-    protected $table = 'lojas';             // NOME DA TABELA NO BD
-    protected $primaryKey = 'id_loja';      // CHAVE PRIMÁRIA
-    protected $fillable = [                 // COLUNAS DA TABELA
+
+    // ===================================================
+    // DEFINICAO DA CONEXAO DO BANCO PRINCIPAL
+    // ===================================================
+
+    protected $connection = 'mysql_dados';
+
+    // ===================================================
+    // DEFINICAO DA TABELA
+    // ===================================================
+
+    protected $table = 'lojas';
+
+    // ===================================================
+    // CHAVE PRIMARIA PERSONALIZADA
+    // ===================================================
+
+    protected $primaryKey = 'id_loja';
+
+    // ===================================================
+    // CAMPOS ATRIBUIVEIS EM MASSA
+    // ===================================================
+
+    protected $fillable = [
         'nome',
         'slug',
-        'url_oficial',
-        'texto_seo',
-        'logo',
-        'descricao_header', 
+        'titulo_pagina',
+        'descricao_pagina',
+        'url_site',
+        'url_base_afiliado',
+        'logo_image_link',
+        'alt_text_logo',
+        'status',
     ];
 
-    //#########################################################################################################
+    // ===================================================
     // RELACIONAMENTOS
-    //#########################################################################################################
+    // ===================================================
 
-    // UMA LOJA POSSUI VARIOS CUPONS (1-N)
-    public function cupons() 
+    public function seo(): HasOne
     {
-        return $this->hasMany(Cupom::class, 'id_loja');
+        return $this->hasOne(
+            LojaSeo::class,
+            'id_loja',
+            'id_loja'
+        );
     }
-    //---------------------------------------------------------------------------------------------------------
 
-    // UMA LOJA POSSUI VÁRIAS OFERTAS (1-N)
-    public function ofertas()
+    public function cupons(): HasMany
     {
-        return $this->hasMany(Oferta::class, 'id_loja');
+        return $this->hasMany(
+            Cupom::class,
+            'id_loja',
+            'id_loja'
+        );
     }
-    //---------------------------------------------------------------------------------------------------------
 
-    // UMA LOJA POSSUI VÁRIAS CATEGORIAS ASSIM COMO UMA CATEGORIA PERTENCE A VÁRIAS LOJAS (N-N) 
-    // RELACIONAMENTO N-N VIROU TABELA 'loja_categoria'
-    public function categorias()
+    public function ofertas(): HasMany
     {
-        return $this->belongsToMany(Categoria::class, 'loja_categoria', 'id_loja', 'id_categoria');
+        return $this->hasMany(
+            Oferta::class,
+            'id_loja',
+            'id_loja'
+        );
     }
-        
-    
+
+    // ===================================================
+    // RELACIONAMENTO N:N COM CATEGORIAS
+    // OBS: NAO USAR withTimestamps() POIS A PIVOT TEM APENAS created_at
+    // ===================================================
+
+    public function categorias(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Categoria::class,
+            'loja_categoria',
+            'id_loja',
+            'id_categoria'
+        );
+    }
+
+    // ===================================================
+    // SCOPES
+    // ===================================================
+
+    public function scopeAtivas(Builder $query): Builder
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeOrdenadas(Builder $query): Builder
+    {
+        return $query->orderBy('nome');
+    }
 }
