@@ -9,7 +9,7 @@
     <!-- ========================================== -->
     <!-- VISUAL DO CARD NA LISTAGEM                 -->
     <!-- ========================================== -->
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-[#fe4b09] p-5 md:p-6 flex flex-col md:flex-row gap-5 md:gap-8 items-center transition-all duration-300 group relative overflow-hidden hover:shadow-lg hover:border-orange-100">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-[#fe4b09] p-5 md:p-6 flex flex-col md:flex-row gap-5 md:gap-8 items-center transition-all duration-300 group relative overflow-hidden hover:shadow-lg">
         
         <!-- 1. Informações do Cupom -->
         <div class="flex-1 w-full text-center md:text-left">
@@ -69,7 +69,7 @@
             
             <!-- Etiqueta Revelar Código (Badge Style) -->
             <div class="mt-3">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-50 border border-[#fe4b09]/20 text-[#fe4b09] text-[10px] font-black uppercase tracking-widest shadow-sm group-hover:border-[#fe4b09]/50 transition-all duration-300">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FFF6F3] border border-[#fe4b09] text-[#171717] text-[10px] font-black uppercase tracking-widest shadow-sm transition-all duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/>
                     </svg>
