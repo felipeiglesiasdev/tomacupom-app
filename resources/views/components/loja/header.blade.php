@@ -2,7 +2,7 @@
 <div class="bg-[#222222] w-full px-4 md:px-24 rounded-b-lg mb-8 shadow-lg pt-14 md:pt-22">
     <div class="max-w-7xl mx-auto py-8 md:py-16 grid grid-cols-[110px_1fr] md:grid-cols-[200px_1fr] gap-x-5 gap-y-4 md:gap-x-12 items-center">
         <div class="col-start-1 col-end-2 row-start-1 flex justify-center self-start md:self-center mt-1 md:mt-0">
-            <img src="{{ $loja->logo_image_link }}" alt="{{ $loja->alt_text_logo }}" class="w-full h-auto max-w-[200px] block rounded-lg">
+            <img src="{{ $loja->logo_image_link }}" alt="{{ $loja->alt_text_logo }}" width="200" height="200" class="w-full h-auto max-w-[200px] block rounded-lg">
         </div>
         <div class="col-start-2 col-end-3 row-start-1 flex flex-col justify-center">
             <h1 class="text-white mt-0 mb-2 md:mb-4 text-xl md:text-4xl font-bold leading-tight">
