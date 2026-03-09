@@ -7,7 +7,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
     <link rel="icon" href="{{ asset('tomacupom.svg') }}" type="image/svg+xml">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link rel="preconnect" href="https://cdn.tomacupom.com.br" crossorigin>
 </head>
 <body class="font-sans">
