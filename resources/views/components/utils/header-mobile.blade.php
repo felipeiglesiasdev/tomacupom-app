@@ -17,7 +17,11 @@
         
         <!-- Botão Hamburger (Menu Lateral) -->
         <button @click="menuOpen = true" class="p-2 -ml-2 text-gray-500 focus:outline-none" aria-label="Abrir menu">
-            <i class="bi bi-list text-2xl" :class="scrolled ? 'text-gray-800' : '{{ $tema === 'dark' ? 'text-white' : 'text-gray-800' }}'"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
+                 class="w-8 h-8 transition-colors duration-300"
+                 :class="scrolled ? 'text-gray-800' : '{{ $tema === 'dark' ? 'text-white' : 'text-gray-800' }}'">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5"/>
+            </svg>
         </button>
 
         <!-- Logo Centralizada -->
@@ -28,7 +32,11 @@
 
         <!-- Botão Lupa (Busca Overlay) -->
         <button @click="searchOpen = true; $nextTick(() => $refs.mobileSearchInput.focus())" class="p-2 -mr-2 text-gray-500 focus:outline-none" aria-label="Pesquisar">
-            <i class="bi bi-search text-xl" :class="scrolled ? 'text-gray-800' : '{{ $tema === 'dark' ? 'text-white' : 'text-gray-800' }}'"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
+                 class="w-6 h-6 transition-colors duration-300"
+                 :class="scrolled ? 'text-gray-800' : '{{ $tema === 'dark' ? 'text-white' : 'text-gray-800' }}'">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>
         </button>
     </div>
 
@@ -36,10 +44,8 @@
     <!-- MENU LATERAL (SLIDE OVER)                  -->
     <!-- ========================================== -->
     <div x-show="menuOpen" class="fixed inset-0 z-[60] flex" x-cloak>
-        <!-- Fundo escuro transparente -->
         <div x-show="menuOpen" x-transition.opacity @click="menuOpen = false" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
         
-        <!-- Painel do Menu -->
         <nav x-show="menuOpen" 
              x-transition:enter="transition ease-out duration-300 transform" 
              x-transition:enter-start="-translate-x-full" 
@@ -52,14 +58,39 @@
             
             <div class="flex items-center justify-between p-5 border-b border-gray-100">
                 <img src="{{ $logoScroll }}" alt="Toma Cupom" class="h-7 w-auto">
-                <button @click="menuOpen = false" class="text-gray-400 hover:text-[#fe4b09]"><i class="bi bi-x-lg text-xl"></i></button>
+                <button @click="menuOpen = false" class="text-gray-400 hover:text-[#fe4b09]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-6 h-6">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                    </svg>
+                </button>
             </div>
             
             <div class="flex flex-col py-4 overflow-y-auto">
-                <a href="{{ route('home') }}" class="px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url"><i class="bi bi-house-door mr-3 text-gray-400"></i><span itemprop="name">Início</span></a>
-                <a href="#" class="px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url"><i class="bi bi-ticket-perforated mr-3 text-gray-400"></i><span itemprop="name">Cupons</span></a>
-                <a href="{{ route('categorias') }}" class="px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url"><i class="bi bi-grid mr-3 text-gray-400"></i><span itemprop="name">Categorias</span></a>
-                <a href="{{ route('lojas') }}" class="px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url"><i class="bi bi-shop mr-3 text-gray-400"></i><span itemprop="name">Lojas</span></a>
+                <a href="{{ route('home') }}" class="flex items-center px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5 mr-3 text-gray-400">
+                        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+                    </svg>
+                    <span itemprop="name">Início</span>
+                </a>
+                <a href="#" class="flex items-center px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5 mr-3 text-gray-400">
+                        <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
+                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
+                    </svg>
+                    <span itemprop="name">Cupons</span>
+                </a>
+                <a href="{{ route('categorias') }}" class="flex items-center px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5 mr-3 text-gray-400">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3A1.5 1.5 0 0 1 15 10.5v3A1.5 1.5 0 0 1 13.5 15h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                    </svg>
+                    <span itemprop="name">Categorias</span>
+                </a>
+                <a href="{{ route('lojas') }}" class="flex items-center px-6 py-4 text-gray-800 font-bold border-b border-gray-50 hover:text-[#fe4b09] hover:bg-orange-50/50" itemprop="url">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-5 h-5 mr-3 text-gray-400">
+                        <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045a.5.5 0 0 0-.12.325v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 .5.5V16h-15v-.5a.5.5 0 0 1 .5-.5H1v-6a.5.5 0 0 1 .5-.5H1.5Z"/>
+                    </svg>
+                    <span itemprop="name">Lojas</span>
+                </a>
             </div>
         </nav>
     </div>
@@ -69,39 +100,41 @@
     <!-- ========================================== -->
     <div x-show="searchOpen" x-transition.opacity class="fixed inset-0 z-[70] bg-[#222222] flex flex-col" x-cloak x-data="liveSearchComponent()">
         
-        <!-- Header da Busca -->
         <div class="flex items-center p-4 border-b border-[#333333]">
             <form @submit.prevent class="flex-1 relative mr-3">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i class="bi bi-search text-gray-400"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-4 h-4 text-gray-400">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
                 </div>
                 <input x-ref="mobileSearchInput" type="search" x-model="query" @input.debounce.300ms="fetchResults" placeholder="Busque lojas..." 
                        class="w-full bg-[#333333] text-white rounded-full py-3 pl-10 pr-4 outline-none focus:ring-2 focus:ring-[#fe4b09] border-none text-sm [&::-webkit-search-cancel-button]:appearance-none">
                 
-                <!-- Botão de limpar (aparece se tiver texto) -->
                 <button type="button" x-show="query.length > 0" @click="query = ''; results = []; $refs.mobileSearchInput.focus()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white">
-                    <i class="bi bi-x-circle-fill"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-4 h-4">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                    </svg>
                 </button>
             </form>
             <button @click="searchOpen = false; query = ''; results = []" class="text-gray-300 font-semibold text-sm">Cancelar</button>
         </div>
 
-        <!-- Resultados da Busca Mobile -->
         <div class="flex-1 overflow-y-auto bg-[#222222]">
             
-            <!-- Estado: Carregando -->
             <div x-show="loading" class="p-8 text-center text-gray-400">
-                <i class="bi bi-arrow-repeat animate-spin text-[#fe4b09] text-2xl"></i>
-                <p class="text-sm mt-3">Buscando...</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 animate-spin text-[#fe4b09] mx-auto mb-3" viewBox="0 0 16 16">
+                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                </svg>
+                <p class="text-sm">Buscando...</p>
             </div>
 
-            <!-- Estado: Dica Inicial -->
             <div x-show="!loading && query.length < 2" class="p-8 text-center text-gray-500">
-                <i class="bi bi-search text-3xl mb-3 block opacity-50"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-10 h-10 mb-3 mx-auto block opacity-50">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
                 <p class="text-sm">Digite pelo menos 2 letras para buscar uma loja.</p>
             </div>
 
-            <!-- Estado: Com Resultados -->
             <template x-if="!loading && results.length > 0">
                 <ul class="m-0 p-0 list-none">
                     <template x-for="loja in results" :key="loja.slug">
@@ -114,17 +147,21 @@
                                     <span class="block font-bold text-gray-100 text-sm" x-text="loja.nome"></span>
                                     <span class="block text-xs text-[#fe4b09] font-medium mt-0.5">Ver cupons e ofertas &rarr;</span>
                                 </div>
-                                <i class="bi bi-chevron-right text-gray-500 text-xs"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="w-3 h-3 text-gray-500">
+                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
                             </a>
                         </li>
                     </template>
                 </ul>
             </template>
 
-            <!-- Estado: Sem Resultados -->
             <template x-if="!loading && query.length >= 2 && results.length === 0">
                 <div class="p-8 text-center text-gray-400">
-                    <i class="bi bi-emoji-frown text-3xl text-[#333333] block mb-3"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-10 h-10 text-[#333333] mx-auto mb-3 block" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.5 3.5 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.5 4.5 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+                    </svg>
                     <p class="text-sm">Nenhuma loja encontrada para "<span x-text="query" class="font-bold text-white"></span>".</p>
                 </div>
             </template>
