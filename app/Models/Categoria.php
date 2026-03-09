@@ -10,7 +10,7 @@ class Categoria extends Model
     // ===================================================
     // DEFINICAO DA CONEXAO DO BANCO DE DADOS PRINCIPAL
     // ===================================================
-    protected $connection = 'mysql_dados';
+    protected $connection = 'mysql_app';
     // ===================================================
     // DEFINICAO DA TABELA
     // ===================================================

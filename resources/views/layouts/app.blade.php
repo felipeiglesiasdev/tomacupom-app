@@ -12,12 +12,28 @@
     <link rel="preconnect" href="https://cdn.tomacupom.com.br" crossorigin>
 </head>
 <body class="font-sans">
-     @include('components.utils.header')
-    <div class="pt-28">
-        <main class="font-sans">
-            @yield('content')
-        </main>
+    <!-- ========================================== -->
+    <!-- HEADER MOBILE (Visível até telas médias)   -->
+    <!-- ========================================== -->
+    <div class="block lg:hidden">
+        @if(request()->routeIs('home'))
+            <x-utils.header-mobile tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
+        @else
+            <x-utils.header-mobile />
+        @endif
     </div>
+
+    <!-- ========================================== -->
+    <!-- HEADER DESKTOP (Visível em telas grandes)  -->
+    <!-- ========================================== -->
+    <div class="hidden lg:block">
+        @if(request()->routeIs('home'))
+            <x-utils.header tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
+        @else
+            <x-utils.header />
+        @endif
+    </div>
+    <main class="font-sans">@yield('content')</main>
     @include('components.utils.footer')
     @stack('scripts')
 </body>

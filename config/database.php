@@ -68,8 +68,8 @@ return [
             'host' => env('DB_APP_HOST', '127.0.0.1'),
             'port' => env('DB_APP_PORT', '3306'),
             'database' => env('DB_APP_DATABASE', 'tomacupom_app'), // Banco de dados da aplicação
-            'username' => env('DB_APP_USERNAME', 'root'),
-            'password' => env('DB_APP_PASSWORD', ''),
+            'username' => env('DB_APP_USERNAME', 'FelipeIglesias'),
+            'password' => env('DB_APP_PASSWORD', 'Sagarana@310870'),
             'unix_socket' => env('DB_APP_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

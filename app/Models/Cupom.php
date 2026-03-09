@@ -10,7 +10,7 @@ class Cupom extends Model
     // ===================================================
     // DEFINICAO DA CONEXAO DO BANCO PRINCIPAL
     // ===================================================
-    protected $connection = 'mysql_dados';
+    protected $connection = 'mysql_app';
     // ===================================================
     // DEFINICAO DA TABELA
     // ===================================================

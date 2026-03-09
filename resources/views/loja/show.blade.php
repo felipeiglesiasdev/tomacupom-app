@@ -1,36 +1,31 @@
 @extends('layouts.app')
 
+@push('seo')
+    @include('components.loja.tags')
+@endpush
 
 @section('content')
-
-    <div class="flex flex-col">
-        {{-- Div com margem negativa para sobrepor ao header principal --}}
-        <div class="-mt-28">
-            {{-- Componente do Cabeçalho da Loja --}}
-            <x-loja.header :loja="$loja" />
-        </div>
-
-        {{-- Container Principal com as duas colunas --}}
-        <div class="container mx-auto px-4 mt-8 md:mt-12">
-            <div class="flex flex-col lg:flex-row gap-8">
+    <x-loja.header :loja="$loja" />
+    
+    <!-- 1. Envoltório total com o mesmo padding do header (alinha no mobile e no PC) -->
+    <div class="w-full px-4 md:px-24">
+        
+        <!-- 2. Envoltório de limite máximo de largura (alinha exatamente com a foto do header) -->
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 mb-12">
+            
+            <div class="w-full md:w-[70%]">
+                <x-loja.tabs :cupons="$loja->cupons" :ofertas="$loja->ofertas" :loja="$loja"/>
                 
-                {{-- Coluna Principal (70%) --}}
-                <div class="w-full lg:w-[70%]">
-                    {{-- Componente das Abas, recebendo os dados do controller --}}
-                    <x-loja.tabs :cupons="$cupons" :ofertas="$ofertas" />
-                </div>
-
-                {{-- Sidebar (30%) --}}
-                <aside class="w-full lg:w-[30%]">
-                    <div class="bg-gray-100 p-8 rounded-2xl min-h-[400px]">
-                        <h3 class="text-xl font-bold text-[#171717]">Sidebar</h3>
-                        <p class="text-gray-600 mt-2">Aqui entrarão outros componentes, como "Mais lojas", etc.</p>
-                    </div>
-                </aside>
-
+                @if($loja->seo)
+                    <x-loja.seo-content :content="$loja->seo->text_content_seo" />
+                @endif
             </div>
+            
+            <!-- LADO DIREITO (30%) - MANTIDO VAZIO COMO PEDIDO -->
+            <div class="w-full md:w-[30%]">
+                <!-- O conteúdo da direita entrará aqui no futuro -->
+            </div>
+            
         </div>
     </div>
-
 @endsection
-

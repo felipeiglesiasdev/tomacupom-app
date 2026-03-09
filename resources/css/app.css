@@ -7,6 +7,6 @@
 @theme { --font-sans: "Poppins"; }
 ::-webkit-scrollbar { width: 12px; height: 8px; }
 ::-webkit-scrollbar-track { background: #171717; }
-::-webkit-scrollbar-thumb { background-color: #fe9b0d; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background-color: #fe9b0d; }
+::-webkit-scrollbar-thumb { background-color: #fe4b09; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background-color: #fe4b09; }
 

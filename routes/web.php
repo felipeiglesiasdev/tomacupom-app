@@ -6,10 +6,13 @@ use App\Http\Controllers\PrivacidadeController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\LojasController;
 use App\Http\Controllers\CuponsController;
+use App\Http\Controllers\BuscaController;
 
 
 // ROTA PÁGINA INICIAL (HOME)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Rota para a pesquisa em tempo real (AJAX)
+Route::get('/busca', [BuscaController::class, 'index'])->name('busca');
 //***********************************************************************************************
 //***********************************************************************************************
 // ROTA POLÍTICA DE PRIVACIDADE
