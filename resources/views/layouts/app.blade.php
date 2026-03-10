@@ -14,7 +14,7 @@
     <!-- HEADER MOBILE (Visível até telas médias)   -->
     <!-- ========================================== -->
     <div class="block lg:hidden">
-        @if(request()->routeIs('home'))
+        @if(request()->routeIs('home') || request()->routeIs('lojas'))
             <x-utils.header-mobile tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
         @else
             <x-utils.header-mobile />
@@ -25,7 +25,7 @@
     <!-- HEADER DESKTOP (Visível em telas grandes)  -->
     <!-- ========================================== -->
     <div class="hidden lg:block">
-        @if(request()->routeIs('home') )
+        @if(request()->routeIs('home') || request()->routeIs('lojas'))
             <x-utils.header tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
         @else
             <x-utils.header />
