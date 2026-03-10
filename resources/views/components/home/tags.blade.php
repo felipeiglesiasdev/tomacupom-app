@@ -6,6 +6,6 @@
 <meta property="og:url" content="https://www.tomacupom.com.br/">
 <meta property="og:title" content="Toma Cupom | Cupons de Desconto, Promoções e Ofertas.">
 <meta property="og:description" content="Economize nas suas compras online! Pegue agora os melhores cupons de desconto e aproveite promoções verificadas todos os dias.">
-<meta property="og:image" content="{{ asset('images/tomacupomshare.webp') }}">
+<meta property="og:image" content="https://cdn.tomacupom.com.br/images/toma-cupom-share.webp">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.tomacupom.com.br/">

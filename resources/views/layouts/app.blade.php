@@ -10,9 +10,6 @@
     <link rel="preconnect" href="https://cdn.tomacupom.com.br" crossorigin>
 </head>
 <body class="font-sans">
-    <!-- ========================================== -->
-    <!-- HEADER MOBILE (Visível até telas médias)   -->
-    <!-- ========================================== -->
     <div class="block lg:hidden">
         @if(request()->routeIs('home') || request()->routeIs('lojas'))
             <x-utils.header-mobile tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
@@ -20,10 +17,6 @@
             <x-utils.header-mobile />
         @endif
     </div>
-
-    <!-- ========================================== -->
-    <!-- HEADER DESKTOP (Visível em telas grandes)  -->
-    <!-- ========================================== -->
     <div class="hidden lg:block">
         @if(request()->routeIs('home') || request()->routeIs('lojas'))
             <x-utils.header tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
