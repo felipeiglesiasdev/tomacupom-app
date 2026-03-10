@@ -21,7 +21,8 @@ class CuponsController extends Controller
                 'url_site',
                 'url_base_afiliado',
                 'logo_image_link',
-                'alt_text_logo'
+                'alt_text_logo',
+                'slug'
             ])
             // CARREGA OS RELACIONAMENTOS (EAGER LOADING) PARA EVITAR O PROBLEMA DE "N+1 QUERIES"
             ->with([

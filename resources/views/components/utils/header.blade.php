@@ -8,8 +8,8 @@
         <div class="rounded-2xl transition-all duration-500 ease-in-out border px-6 py-3" :class="{'bg-white/95 backdrop-blur-lg shadow-lg border-gray-200/80': scrolled, 'bg-transparent shadow-none border-transparent': !scrolled }">
             <div class="flex items-center justify-between gap-4 lg:gap-8">
                 <a href="{{ route('home') }}" class="group flex items-center flex-shrink-0" title="Página Inicial - Toma Cupom">
-                    <img x-show="!scrolled" src="{{ $logoTopo }}" alt="Logo Toma Cupom" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo" fetchpriority="high">
-                    <img x-show="scrolled" x-cloak src="{{ $logoScroll }}" alt="Logo Toma Cupom" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo" loading="lazy">
+                    <img x-show="!scrolled" src="{{ $logoTopo }}" alt="Logo Toma Cupom" width="160" height="40" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo" fetchpriority="high">
+                    <img x-show="scrolled" x-cloak src="{{ $logoScroll }}" alt="Logo Toma Cupom" width="160" height="40" class="h-10 w-auto transition-transform duration-300 group-hover:scale-95" itemprop="logo" loading="lazy">
                 </a>
                 <div class="flex-1 flex justify-center w-full max-w-xl" itemscope itemtype="https://schema.org/WebSite" x-data="liveSearchComponent()" @click.away="showDropdown = false">
                     <meta itemprop="url" content="{{ url('/') }}"/>
@@ -23,7 +23,6 @@
                                :class="scrolled 
                                     ? 'bg-gray-100 text-gray-700 placeholder-gray-400 border border-[#fe4b09] focus:bg-white focus:border-orange-300 focus:ring-4 focus:ring-orange-100 focus:shadow-sm' 
                                     : '{{ $tema === 'dark' ? 'bg-white/10 text-white placeholder-white/70 border border-white/20 focus:bg-white/20 focus:border-white/40 focus:ring-4 focus:ring-white/10' : 'bg-black/5 text-gray-800 placeholder-gray-500 border border-black/10 focus:bg-black/10 focus:border-black/20 focus:ring-4 focus:ring-black/5' }} backdrop-blur-md'">
-                        <!-- ÍCONE DE BUSCA (SVG INLINE COM CORES DINÂMICAS) -->
                         <div class="absolute left-4 top-1/2 -translate-y-1/2 transition-transform duration-300 group-focus-within:scale-110 group-focus-within:rotate-3 z-10 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"
                                  class="w-5 h-5 transition-colors duration-300"
@@ -44,7 +43,6 @@
                                     <template x-for="loja in results" :key="loja.slug">
                                         <li>
                                             <a :href="'/cupons/' + loja.slug" class="flex items-center gap-4 px-5 py-3 hover:bg-[#333333] transition-colors border-b border-[#333333] last:border-0 no-underline">
-                                                <!-- Container sem fundo branco e padding, ajustado para fundo escuro -->
                                                 <div class="w-12 h-12 flex-shrink-0 rounded-lg flex items-center justify-center overflow-hidden shadow-sm">
                                                     <img :src="loja.logo_image_link || 'https://via.placeholder.com/80?text=Logo'" :alt="loja.nome" class="max-w-full max-h-full object-contain rounded-md drop-shadow-sm">
                                                 </div>
