@@ -1,7 +1,6 @@
 @props(['loja'])
 <title>{{ $loja->seo->title_seo }}</title>
 <meta name="description" content="{{ $loja->seo->description_seo }}">
-<meta name="keywords" content="{{ $loja->seo->keywords_seo }}">
 <meta property="og:site_name" content="Toma Cupom">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.tomacupom.com.br/cupons/{{$loja->slug}}">
