@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\LojasController;
 use App\Http\Controllers\CuponsController;
 use App\Http\Controllers\BuscaController;
+use App\Http\Controllers\SitemapController;
+
 
 
 // ROTA PÁGINA INICIAL (HOME)
@@ -31,3 +33,7 @@ Route::get('/lojas', [LojasController::class, 'index'])->name('lojas');
 //***********************************************************************************************
 // ROTA PARA EXIBIR CUPONS DE UMA LOJA ESPECIFICA --> EX.: /cupons/adidas | /cupons/centauro
 Route::get('/cupons/{slug}', [CuponsController::class, 'show'])->name('cupons.show');
+//***********************************************************************************************
+//***********************************************************************************************
+// Rota do Sitemap XML
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');

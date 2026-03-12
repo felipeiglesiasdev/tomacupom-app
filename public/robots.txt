@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: https://www.tomacupom.com.br/sitemap.xml
