@@ -9,3 +9,5 @@
 <meta property="og:image" content="https://cdn.tomacupom.com.br/images/toma-cupom-share.webp">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.tomacupom.com.br/">
+<x-utils.schema-organization />
+<x-utils.schema-website />

@@ -9,3 +9,4 @@
 <meta property="og:image" content="{{ $loja->logo_image_link }}">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.tomacupom.com.br/cupons/{{$loja->slug}}">
+<x-loja.schema-loja :loja="$loja" />
