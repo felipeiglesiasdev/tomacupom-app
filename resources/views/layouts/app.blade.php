@@ -8,6 +8,7 @@
     @stack('styles')
     <link rel="icon" href="{{ asset('tomacupom.svg') }}" type="image/svg+xml">
     <link rel="preconnect" href="https://cdn.tomacupom.com.br" crossorigin>
+    <meta name="verification" content="3e024fb2413c2e4b955f34eb4eb6698a" />
 </head>
 <body class="font-sans">
     <div class="block lg:hidden">
