@@ -2,7 +2,6 @@
 @push('seo')
     <title>Todas as Lojas e Marcas Parceiras | Toma Cupom</title>
     <meta name="description" content="Navegue pela lista completa de lojas parceiras do Toma Cupom. Encontre cupons de desconto e ofertas exclusivas de centenas de marcas organizadas de A a Z.">
-    <meta name="keywords" content="lista de lojas, cupons de desconto, marcas parceiras, ofertas, promoções, descontos online, toma cupom">
     <meta property="og:site_name" content="Toma Cupom">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tomacupom.com.br/lojas/">
@@ -70,7 +69,7 @@
                                             {{ $loja->nome }}
                                         </span>
                                         <span class="text-[11px] font-bold text-gray-400 uppercase tracking-tight flex items-center gap-1 group-hover:text-[#fe4b09]">
-                                            Ver cupões 
+                                            Ver cupons
                                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                             </svg>

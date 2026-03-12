@@ -3,8 +3,9 @@
     @include('components.home.tags')
 @endpush
 @section('content')
+    <x-home.hero />
+    <x-home.lojas-destaque />
     <x-home.grupos-wpp-telegram />
-    <x-home.faq />
 @endsection
 
 

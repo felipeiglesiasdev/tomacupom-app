@@ -11,14 +11,14 @@
 </head>
 <body class="font-sans">
     <div class="block lg:hidden">
-        @if(request()->routeIs('home') || request()->routeIs('lojas'))
+        @if(request()->routeIs('lojas'))
             <x-utils.header-mobile tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
         @else
             <x-utils.header-mobile />
         @endif
     </div>
     <div class="hidden lg:block">
-        @if(request()->routeIs('home') || request()->routeIs('lojas'))
+        @if(request()->routeIs('lojas'))
             <x-utils.header tema="light" logoTopo="https://cdn.tomacupom.com.br/images/logo-toma-cupom-fundo-branco.webp" />
         @else
             <x-utils.header />
