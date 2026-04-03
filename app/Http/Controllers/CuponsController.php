@@ -40,10 +40,25 @@ class CuponsController extends Controller
                 }
             ])
             ->firstOrFail(); // SE NÃO ACHAR A LOJA OU SE ELA ESTIVER INATIVA, GERA UM ERRO 404
+        
+        // PEGA OS IDs DAS CATEGORIAS DA LOJA ATUAL
+        $categoriaIds = $loja->categorias()->pluck('categorias.id_categoria');
+
+        // BUSCA ATÉ 10 LOJAS SEMELHANTES (DA MESMA CATEGORIA, ATIVAS E DIFERENTES DA LOJA ATUAL)
+        $lojasSemelhantes = Loja::whereHas('categorias', function ($query) use ($categoriaIds) {
+                $query->whereIn('categorias.id_categoria', $categoriaIds);
+            })
+            ->where('status', 1)
+            ->where('id_loja', '!=', $loja->id_loja)
+            ->inRandomOrder()
+            ->limit(10)
+            ->get(['id_loja', 'nome', 'slug', 'logo_image_link', 'alt_text_logo']);
+
 
         // RETORNA A VIEW (resources/views/loja/show.blade.php) E ENVIA OS DADOS
         return view('loja.show', [
-            'loja' => $loja
+            'loja' => $loja,
+            'lojasSemelhantes' => $lojasSemelhantes
         ]);
     }
 }

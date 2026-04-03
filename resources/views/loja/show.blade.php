@@ -13,7 +13,7 @@
                 @endif
             </div>
             <div class="w-full md:w-[30%]">
-            
+                <x-loja.sidebar.lojas-semelhantes :lojas="$lojasSemelhantes" />
             </div>
         </div>
     </div>
